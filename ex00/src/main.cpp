@@ -8,7 +8,7 @@ void	checkArguments(int argc, char *argv[])
 	if (argc != 2)
 		{
         std::cerr << B_SOFTBLUE << ":::>>> Launch btc with the correct path to the input file." << RESET << std::endl;
-        std::cerr << B_SOFTBLUE << "hint: ./data/input2.txt" << RESET << std::endl;
+        std::cerr << B_SOFTBLUE << "hint: ./data/input.csv" << RESET << std::endl;
         std::cerr << BRIGHT_RED << "Wrong number of arguments" << RESET << std::endl;
         exit(1);
         }
@@ -26,7 +26,7 @@ void	checkArguments(int argc, char *argv[])
 	{
 		std::cout << BRIGHT_RED << "Error caught: " << e.what() << RESET << std::endl;
 		std::cout << B_SOFTBLUE << ":::>>> Launch btc with the correct path to the input file." << RESET << std::endl;
-        std::cout << B_SOFTBLUE << "hint: ./btc ./data/input2.txt" << RESET << std::endl;
+        std::cout << B_SOFTBLUE << "hint: ./btc ./data/input.csv" << RESET << std::endl;
 		exit(1);
 	}
 	file.close();
@@ -35,7 +35,20 @@ void	checkArguments(int argc, char *argv[])
 int	main(int argc, char *argv[])
 {
 	checkArguments(argc, argv);
-
-	Bitcoin ex(argv[1]);
-   ex.searchDataBase();
+try {
+    Bitcoin ex(argv[1]);
+    ex.searchDataBase();
+}
+catch (const std::out_of_range &e) {
+    std::cerr << "Out of range error: " << e.what() << std::endl;
+    
+}
+catch (const std::invalid_argument &e) {
+    std::cerr << "Invalid argument error: " << e.what() << std::endl;
+   
+}
+catch (const std::exception &e) {
+    std::cerr << "ERROR: " << e.what() << std::endl;
+}
+	
 }

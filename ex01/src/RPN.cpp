@@ -54,10 +54,17 @@ void RPN::doOperations(char op)
 	int	num1;
 	int	num2;
 
+if(_nStack.size() < 2)
+{
+	throw std::invalid_argument("Insufficient number of operands!");
+}
 	num1 = _nStack.top();
+	
 	_nStack.pop();
 	num2 = _nStack.top();
 	_nStack.pop();
+	
+	
 	switch (op)
 	{
 	case '+':

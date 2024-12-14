@@ -67,19 +67,20 @@ int	main(int argc, char *argv[])
 	try
 	{
 		rpn.runRPN(argc, argv);
+		std::cout << PASTEL_LAVENDER << BOLD <<"Result of RPN: " << rpn << RESET <<std::endl;
 	}
 	catch (const std::runtime_error &e)
 	{
-		std::cerr << "Runtime  error: " << e.what() << std::endl;
+		std::cerr <<LIGHT_RED <<  "Runtime  error: " << e.what() << RESET<<std::endl;
 	}
 	catch (const std::invalid_argument &e)
 	{
-		std::cerr << "Invalid argument: " << e.what() << std::endl;
+		std::cerr <<LIGHT_RED  << "Invalid argument: " << e.what() << RESET<< std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << "Exception caught: " << e.what() << std::endl;
+		std::cerr <<LIGHT_RED  <<"Exception caught: " << e.what() << std::endl;
 	}
 
-	std::cout << PASTEL_LAVENDER << BOLD <<"Result of RPN: " << rpn << RESET <<std::endl;
+	
 }
